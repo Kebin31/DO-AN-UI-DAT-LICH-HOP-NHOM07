@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quan ly cuoc hop</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="auth-mode">
+    <section class="auth-screen" id="authScreen" aria-label="Tai khoan">
+      <div class="auth-panel">
+        <div class="auth-card">
+          <div class="auth-title">
+            <p class="eyebrow">He thong quan ly lich hop</p>
+            <h1>Meeting Hub</h1>
+          </div>
+          <div class="auth-tabs" role="tablist" aria-label="Tai khoan">
+            <button class="auth-tab active" type="button" data-auth-view="loginForm">Dang nhap</button>
+            <button class="auth-tab" type="button" data-auth-view="registerForm">Dang ky</button>
+          </div>
+
+          <form class="auth-form active" id="loginForm">
+            <label class="field">
+              <span>Email</span>
+              <input name="email" type="email" autocomplete="email" required placeholder="employee@company.com" />
+            </label>
+            <label class="field">
+              <span>Mat khau</span>
+              <input name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Nhap mat khau" />
+            </label>
+            <div class="auth-row">
+              <label class="check-field">
+                <input name="remember" type="checkbox" />
+                <span>Ghi nho dang nhap</span>
+              </label>
+              <button class="link-button" type="button">Quen mat khau?</button>
+            </div>
+            <button class="primary-action auth-submit" type="submit">Dang nhap</button>
+            <p class="form-message" id="loginMessage" role="status"></p>
+          </form>
+
+          <form class="auth-form" id="registerForm">
+            <label class="field">
+              <span>Ho va ten</span>
+              <input name="name" autocomplete="name" required placeholder="Nhap ho va ten" />
+            </label>
+            <label class="field">
+              <span>Email cong ty</span>
+              <input name="email" type="email" autocomplete="email" required placeholder="employee@company.com" />
+            </label>
+            <label class="field">
+              <span>Phong ban</span>
+              <select name="department" required>
+                <option value="">Chon phong ban</option>
+                <option>Phong Ky thuat</option>
+                <option>Phong Nhan su</option>
+                <option>Phong Kinh doanh</option>
+                <option>Phong Van hanh</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Mat khau</span>
+              <input name="password" type="password" autocomplete="new-password" required minlength="6" placeholder="Toi thieu 6 ky tu" />
+            </label>
+            <label class="field">
+              <span>Xac nhan mat khau</span>
+              <input name="confirmPassword" type="password" autocomplete="new-password" required minlength="6" placeholder="Nhap lai mat khau" />
+            </label>
+            <button class="primary-action auth-submit" type="submit">Tao tai khoan</button>
+            <p class="form-message" id="registerMessage" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div class="app-shell" id="appShell" aria-hidden="true">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">M</div>
+          <div>
+            <strong>Meeting Hub</strong>
+            <span>Workspace</span>
+          </div>
+        </div>
+        <nav class="side-nav" aria-label="Dieu huong">
+          <button class="nav-item active" type="button" data-view="manageView" title="Quan ly cuoc hop">
+            <span aria-hidden="true">≡</span>
+            <span>Quan ly</span>
+          </button>
+          <button class="nav-item" type="button" data-view="createView" title="Tao lich hop">
+            <span aria-hidden="true">＋</span>
+            <span>Tao lich</span>
+          </button>
+          <button class="nav-item" type="button" data-view="scheduleView" title="Lich trinh cuoc hop">
+            <span aria-hidden="true">▦</span>
+            <span>Lich trinh</span>
+          </button>
+        </nav>
+        <button class="logout-button" type="button" id="logoutBtn">Dang xuat</button>
+      </aside>
+
+      <main class="workspace">
+        <section class="topbar">
+          <div>
+            <p class="eyebrow">Lich hop noi bo</p>
+            <h1 id="pageTitle">Quan ly cuoc hop</h1>
+          </div>
+          <div class="user-chip">
+            <span class="avatar" id="userAvatar">LK</span>
+            <span id="userName">Le Tan Kiet</span>
+          </div>
+        </section>
+
+        <section class="view active" id="manageView" aria-labelledby="manageTitle">
+          <div class="section-head">
+            <div>
+              <h2 id="manageTitle">Danh sach cuoc hop</h2>
+              <p>10 cuoc hop moi nhat cua ban</p>
+            </div>
+            <div class="head-actions">
+              <button class="icon-button" type="button" id="refreshBtn" title="Lam moi">↻</button>
+              <button class="primary-action" type="button" id="exportBtn">Xuat danh sach</button>
+            </div>
+          </div>
+
+          <div class="toolbar">
+            <label class="search-field">
+              <span aria-hidden="true">⌕</span>
+              <input id="searchInput" type="search" placeholder="Tim theo tieu de hoac phong hop" />
+            </label>
+            <label class="select-field">
+              <span>Trang thai</span>
+              <select id="statusFilter">
+                <option value="all">Tat ca</option>
+                <option value="upcoming">Sap dien ra</option>
+                <option value="running">Dang dien ra</option>
+                <option value="ended">Da ket thuc</option>
+                <option value="cancelled">Da huy</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Cuoc hop</th>
+                  <th>Phong hop</th>
+                  <th>Thoi gian</th>
+                  <th>Trang thai</th>
+                  <th>Phan hoi</th>
+                  <th class="actions-col">Thao tac</th>
+                </tr>
+              </thead>
+              <tbody id="meetingTable"></tbody>
+            </table>
+          </div>
+
+          <div class="pagination">
+            <span id="pageInfo">Trang 1/1</span>
+            <div>
+              <button class="icon-button" type="button" id="prevPage" title="Trang truoc">‹</button>
+              <button class="icon-button" type="button" id="nextPage" title="Trang sau">›</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="createView" aria-labelledby="createTitle">
+          <div class="section-head">
+            <div>
+              <h2 id="createTitle">Tao lich hop</h2>
+              <p>Thong tin bat buoc duoc kiem tra truoc khi luu</p>
+            </div>
+          </div>
+
+          <form class="meeting-form" id="meetingForm">
+            <div class="form-grid">
+              <label class="field wide">
+                <span>Tieu de cuoc hop</span>
+                <input name="title" maxlength="200" required placeholder="Nhap ten hoac chu de cuoc hop" />
+              </label>
+
+              <label class="field">
+                <span>Phong hop</span>
+                <select name="room" required>
+                  <option value="">Chon phong hop</option>
+                  <option>Phong Lotus - Tang 3</option>
+                  <option>Phong Orchid - Tang 4</option>
+                  <option>Phong Sunflower - Tang 5</option>
+                  <option>Phong Strategy - Online</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Ngay hop</span>
+                <input name="date" type="date" required />
+              </label>
+
+              <label class="field">
+                <span>Thoi gian bat dau</span>
+                <input name="start" type="time" required />
+              </label>
+
+              <label class="field">
+                <span>Thoi gian ket thuc</span>
+                <input name="end" type="time" required />
+              </label>
+
+              <div class="field wide participant-field">
+                <span>Nguoi tham gia</span>
+                <div class="participant-input-row">
+                  <input id="participantInput" name="participantInput" placeholder="Nhap ten nguoi tham gia" autocomplete="off" />
+                  <button class="secondary-action" type="button" id="addParticipantBtn">Them</button>
+                </div>
+                <div class="participant-list" id="participantList" aria-live="polite"></div>
+                <small id="participantHelp">Toi da 5 nguoi tham gia.</small>
+              </div>
+
+              <label class="field wide">
+                <span>Noi dung cuoc hop</span>
+                <textarea name="notes" maxlength="1000" rows="5" placeholder="Nhap noi dung hoac ghi chu cuoc hop"></textarea>
+              </label>
+
+              <label class="field wide upload-box">
+                <span>Tep dinh kem</span>
+                <input name="attachment" type="file" accept=".pdf,.docx,.xlsx,.jpg,.jpeg,.png" />
+                <small>PDF, DOCX, XLSX, JPG, PNG - toi da 20 MB</small>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button class="secondary-action" type="reset">Huy</button>
+              <button class="primary-action" type="submit">Tao lich hop</button>
+            </div>
+            <p class="form-message" id="formMessage" role="status"></p>
+          </form>
+        </section>
+
+        <section class="view" id="scheduleView" aria-labelledby="scheduleTitle">
+          <div class="section-head">
+            <div>
+              <h2 id="scheduleTitle">Lich trinh cuoc hop</h2>
+              <p>Xem tat ca cuoc hop sap xep theo tung ngay trong tuan</p>
+            </div>
+            <div class="head-actions">
+              <button class="secondary-action" type="button" id="todayWeekBtn">Hom nay</button>
+            </div>
+          </div>
+
+          <div class="schedule-toolbar">
+            <button class="icon-button" type="button" id="prevWeekBtn" title="Tuan truoc">‹</button>
+            <span class="schedule-range" id="scheduleRange">--</span>
+            <button class="icon-button" type="button" id="nextWeekBtn" title="Tuan sau">›</button>
+          </div>
+
+          <div class="schedule-grid" id="scheduleGrid"></div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="detailDialog">
+      <div class="dialog-head">
+        <h3 id="dialogTitle">Chi tiet cuoc hop</h3>
+        <button class="icon-button" type="button" id="closeDialog" title="Dong">×</button>
+      </div>
+      <div id="dialogBody" class="dialog-body"></div>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
