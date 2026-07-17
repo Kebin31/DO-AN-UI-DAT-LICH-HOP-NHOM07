@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap");
+
 :root {
   --bg: #eef4ff;
   --panel: rgba(255, 255, 255, 0.88);
@@ -34,7 +36,7 @@ body {
     radial-gradient(circle at 88% 4%, rgba(36, 107, 254, 0.16), transparent 30%),
     linear-gradient(135deg, #f8fbff 0%, var(--bg) 48%, #edf7f5 100%);
   color: var(--ink);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Be Vietnam Pro", "Segoe UI", Arial, Helvetica, sans-serif;
 }
 
 body::before {
@@ -704,7 +706,7 @@ select[multiple] {
 
 .participant-list:empty::before {
   color: var(--muted);
-  content: "Chua co nguoi tham gia";
+  content: "Chưa có người tham gia";
   font-weight: 400;
 }
 

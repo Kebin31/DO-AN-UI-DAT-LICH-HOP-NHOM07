@@ -1,55 +1,55 @@
 const meetings = [
   {
     id: "M001",
-    title: "Hop kickoff du an CRM",
-    room: "Phong Lotus - Tang 3",
+    title: "Họp kickoff dự án CRM",
+    room: "Phòng Lotus - Tầng 3",
     time: "09:00 - 10:30, 09/07/2026",
     status: "upcoming",
-    owner: "Le Tan Kiet",
+    owner: "Lê Tấn Kiệt",
     accepted: 8,
     declined: 1,
     pending: 2,
   },
   {
     id: "M002",
-    title: "Cap nhat sprint backend",
-    room: "Phong Strategy - Online",
+    title: "Cập nhật sprint backend",
+    room: "Phòng Strategy - Online",
     time: "14:00 - 15:00, 08/07/2026",
     status: "running",
-    owner: "Le Tan Kiet",
+    owner: "Lê Tấn Kiệt",
     accepted: 5,
     declined: 0,
     pending: 1,
   },
   {
     id: "M003",
-    title: "Tong ket thang 6",
-    room: "Phong Orchid - Tang 4",
+    title: "Tổng kết tháng 6",
+    room: "Phòng Orchid - Tầng 4",
     time: "15:30 - 17:00, 28/06/2026",
     status: "ended",
-    owner: "Le Tan Kiet",
+    owner: "Lê Tấn Kiệt",
     accepted: 12,
     declined: 2,
     pending: 0,
   },
   {
     id: "M004",
-    title: "Review thiet ke giao dien",
-    room: "Phong Sunflower - Tang 5",
+    title: "Review thiết kế giao diện",
+    room: "Phòng Sunflower - Tầng 5",
     time: "10:00 - 11:00, 12/07/2026",
     status: "upcoming",
-    owner: "Le Tan Kiet",
+    owner: "Lê Tấn Kiệt",
     accepted: 4,
     declined: 0,
     pending: 4,
   },
   {
     id: "M005",
-    title: "Dao tao quy trinh van hanh",
-    room: "Phong Lotus - Tang 3",
+    title: "Đào tạo quy trình vận hành",
+    room: "Phòng Lotus - Tầng 3",
     time: "08:00 - 09:30, 05/07/2026",
     status: "cancelled",
-    owner: "Le Tan Kiet",
+    owner: "Lê Tấn Kiệt",
     accepted: 0,
     declined: 0,
     pending: 0,
@@ -57,10 +57,10 @@ const meetings = [
 ];
 
 const statusLabels = {
-  upcoming: "Sap dien ra",
-  running: "Dang dien ra",
-  ended: "Da ket thuc",
-  cancelled: "Da huy",
+  upcoming: "Sắp diễn ra",
+  running: "Đang diễn ra",
+  ended: "Đã kết thúc",
+  cancelled: "Đã hủy",
 };
 
 let currentPage = 1;
@@ -95,10 +95,10 @@ const currentUserStorageKey = "meetingHubCurrentUser";
 
 const defaultUsers = [
   {
-    name: "Le Tan Kiet",
+    name: "Lê Tấn Kiệt",
     email: "employee@company.com",
     password: "123456",
-    department: "Phong Ky thuat",
+    department: "Phòng Kỹ thuật",
   },
 ];
 const users = loadUsers();
@@ -201,11 +201,11 @@ loginForm.addEventListener("submit", (event) => {
   const user = users.find((item) => item.email.toLowerCase() === email && item.password === password);
 
   if (!user) {
-    setMessage(loginMessage, "Email hoac mat khau khong dung.", "error");
+    setMessage(loginMessage, "Email hoặc mật khẩu không đúng.", "error");
     return;
   }
 
-  setMessage(loginMessage, "Dang nhap thanh cong.", "success");
+  setMessage(loginMessage, "Đăng nhập thành công.", "success");
   saveCurrentUser(user);
   showApp(user);
 });
@@ -220,12 +220,12 @@ registerForm.addEventListener("submit", (event) => {
   const confirmPassword = data.get("confirmPassword");
 
   if (users.some((user) => user.email.toLowerCase() === email)) {
-    setMessage(registerMessage, "Email nay da duoc dang ky.", "error");
+    setMessage(registerMessage, "Email này đã được đăng ký.", "error");
     return;
   }
 
   if (password !== confirmPassword) {
-    setMessage(registerMessage, "Mat khau xac nhan khong khop.", "error");
+    setMessage(registerMessage, "Mật khẩu xác nhận không khớp.", "error");
     return;
   }
 
@@ -233,7 +233,7 @@ registerForm.addEventListener("submit", (event) => {
   users.push(newUser);
   saveUsers();
   registerForm.reset();
-  setMessage(registerMessage, "Tao tai khoan thanh cong. Tai khoan da duoc luu.", "success");
+  setMessage(registerMessage, "Tạo tài khoản thành công. Tài khoản đã được lưu.", "success");
 
   authTabs.forEach((item) => item.classList.toggle("active", item.dataset.authView === "loginForm"));
   document.querySelectorAll(".auth-form").forEach((authForm) => {
@@ -250,17 +250,17 @@ function renderParticipants() {
       (name, index) => `
         <span class="participant-chip">
           <span>${escapeHtml(name)}</span>
-          <button class="remove-participant" type="button" data-index="${index}" title="Xoa ${escapeHtml(name)}">x</button>
+          <button class="remove-participant" type="button" data-index="${index}" title="Xóa ${escapeHtml(name)}">x</button>
         </span>
       `
     )
     .join("");
 
-  participantHelp.textContent = `Da them ${participants.length}/${maxParticipants} nguoi tham gia.`;
+  participantHelp.textContent = `Đã thêm ${participants.length}/${maxParticipants} người tham gia.`;
   addParticipantBtn.disabled = participants.length >= maxParticipants;
   participantInput.disabled = participants.length >= maxParticipants;
   participantInput.placeholder =
-    participants.length >= maxParticipants ? "Da dat toi da 5 nguoi" : "Nhap ten nguoi tham gia";
+    participants.length >= maxParticipants ? "Đã đạt tối đa 5 người" : "Nhập tên người tham gia";
 }
 
 function addParticipant() {
@@ -269,19 +269,19 @@ function addParticipant() {
   formMessage.textContent = "";
 
   if (!name) {
-    formMessage.textContent = "Vui long nhap ten nguoi tham gia.";
+    formMessage.textContent = "Vui lòng nhập tên người tham gia.";
     formMessage.classList.add("error");
     return;
   }
 
   if (participants.length >= maxParticipants) {
-    formMessage.textContent = "Chi duoc them toi da 5 nguoi tham gia.";
+    formMessage.textContent = "Chỉ được thêm tối đa 5 người tham gia.";
     formMessage.classList.add("error");
     return;
   }
 
   if (participants.some((participant) => participant.toLowerCase() === name.toLowerCase())) {
-    formMessage.textContent = "Nguoi tham gia nay da co trong danh sach.";
+    formMessage.textContent = "Người tham gia này đã có trong danh sách.";
     formMessage.classList.add("error");
     return;
   }
@@ -353,14 +353,14 @@ function renderMeetings() {
           <td><span class="badge ${meeting.status}">${statusLabels[meeting.status]}</span></td>
           <td>
             <span class="response-pill">
-              <span>${meeting.accepted} dong y · ${meeting.declined} tu choi</span>
-              <span>${meeting.pending} chua phan hoi</span>
+              <span>${meeting.accepted} đồng ý · ${meeting.declined} từ chối</span>
+              <span>${meeting.pending} chưa phản hồi</span>
             </span>
           </td>
           <td class="row-actions">
-            <button class="small-button" type="button" data-action="detail" data-id="${meeting.id}">Chi tiet</button>
-            <button class="small-button" type="button" data-action="edit" data-id="${meeting.id}" ${canEdit ? "" : "disabled"}>Sua</button>
-            <button class="danger-action" type="button" data-action="cancel" data-id="${meeting.id}" ${meeting.status === "cancelled" ? "disabled" : ""}>Huy</button>
+            <button class="small-button" type="button" data-action="detail" data-id="${meeting.id}">Chi tiết</button>
+            <button class="small-button" type="button" data-action="edit" data-id="${meeting.id}" ${canEdit ? "" : "disabled"}>Sửa</button>
+            <button class="danger-action" type="button" data-action="cancel" data-id="${meeting.id}" ${meeting.status === "cancelled" ? "disabled" : ""}>Hủy</button>
           </td>
         </tr>
       `;
@@ -368,7 +368,7 @@ function renderMeetings() {
     .join("");
 
   if (!visible.length) {
-    tableBody.innerHTML = `<tr><td colspan="6">Khong co cuoc hop phu hop.</td></tr>`;
+    tableBody.innerHTML = `<tr><td colspan="6">Không có cuộc họp phù hợp.</td></tr>`;
   }
 
   pageInfo.textContent = `Trang ${currentPage}/${totalPages}`;
@@ -379,24 +379,24 @@ function renderMeetings() {
 function showDetail(meeting) {
   dialogTitle.textContent = meeting.title;
   dialogBody.innerHTML = `
-    <div class="dialog-row"><strong>Ma lich</strong><span>${meeting.id}</span></div>
-    <div class="dialog-row"><strong>Phong hop</strong><span>${meeting.room}</span></div>
-    <div class="dialog-row"><strong>Thoi gian</strong><span>${meeting.time}</span></div>
-    <div class="dialog-row"><strong>Trang thai</strong><span>${statusLabels[meeting.status]}</span></div>
-    <div class="dialog-row"><strong>Phan hoi</strong><span>${meeting.accepted} dong y, ${meeting.declined} tu choi, ${meeting.pending} chua phan hoi</span></div>
+    <div class="dialog-row"><strong>Mã lịch</strong><span>${meeting.id}</span></div>
+    <div class="dialog-row"><strong>Phòng họp</strong><span>${meeting.room}</span></div>
+    <div class="dialog-row"><strong>Thời gian</strong><span>${meeting.time}</span></div>
+    <div class="dialog-row"><strong>Trạng thái</strong><span>${statusLabels[meeting.status]}</span></div>
+    <div class="dialog-row"><strong>Phản hồi</strong><span>${meeting.accepted} đồng ý, ${meeting.declined} từ chối, ${meeting.pending} chưa phản hồi</span></div>
   `;
   detailDialog.showModal();
 }
 
 const viewTitles = {
-  manageView: "Quan ly cuoc hop",
-  createView: "Tao lich hop",
-  scheduleView: "Lich trinh cuoc hop",
+  manageView: "Quản lý cuộc họp",
+  createView: "Tạo lịch họp",
+  scheduleView: "Lịch trình cuộc họp",
 };
 
 const scheduleGrid = document.querySelector("#scheduleGrid");
 const scheduleRange = document.querySelector("#scheduleRange");
-const weekdayLabels = ["Thu 2", "Thu 3", "Thu 4", "Thu 5", "Thu 6", "Thu 7", "Chu nhat"];
+const weekdayLabels = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"];
 
 let scheduleWeekStart = getWeekStart(new Date());
 
@@ -468,7 +468,7 @@ function renderSchedule() {
               `;
             })
             .join("")
-        : `<p class="schedule-empty">Khong co lich</p>`;
+        : `<p class="schedule-empty">Không có lịch</p>`;
 
       return `
         <div class="schedule-day ${dateKey === todayKey ? "is-today" : ""}">
@@ -533,11 +533,11 @@ tableBody.addEventListener("click", (event) => {
   }
 
   if (button.dataset.action === "edit") {
-    alert(`Mo chinh sua: ${meeting.title}`);
+    alert(`Mở chỉnh sửa: ${meeting.title}`);
     return;
   }
 
-  if (button.dataset.action === "cancel" && confirm("Ban co chac muon huy cuoc hop nay?")) {
+  if (button.dataset.action === "cancel" && confirm("Bạn có chắc muốn hủy cuộc họp này?")) {
     meeting.status = "cancelled";
     renderMeetings();
     renderSchedule();
@@ -559,7 +559,7 @@ document.querySelector("#refreshBtn").addEventListener("click", () => {
   renderSchedule();
 });
 document.querySelector("#exportBtn").addEventListener("click", () => {
-  alert("Da tao tep xuat danh sach theo bo loc hien tai.");
+  alert("Đã tạo tệp xuất danh sách theo bộ lọc hiện tại.");
 });
 document.querySelector("#prevPage").addEventListener("click", () => {
   currentPage -= 1;
@@ -585,25 +585,25 @@ form.addEventListener("submit", (event) => {
   formMessage.className = "form-message";
 
   if (selectedDate < today) {
-    formMessage.textContent = "Ngay hop khong duoc nam trong qua khu.";
+    formMessage.textContent = "Ngày họp không được nằm trong quá khứ.";
     formMessage.classList.add("error");
     return;
   }
 
   if (start >= end) {
-    formMessage.textContent = "Thoi gian bat dau phai nho hon thoi gian ket thuc.";
+    formMessage.textContent = "Thời gian bắt đầu phải nhỏ hơn thời gian kết thúc.";
     formMessage.classList.add("error");
     return;
   }
 
   if (attachment && attachment.size > 20 * 1024 * 1024) {
-    formMessage.textContent = "Tep dinh kem vuot qua 20 MB.";
+    formMessage.textContent = "Tệp đính kèm vượt quá 20 MB.";
     formMessage.classList.add("error");
     return;
   }
 
   if (!participants.length) {
-    formMessage.textContent = "Vui long them it nhat 1 nguoi tham gia.";
+    formMessage.textContent = "Vui lòng thêm ít nhất 1 người tham gia.";
     formMessage.classList.add("error");
     participantInput.focus();
     return;
@@ -615,7 +615,7 @@ form.addEventListener("submit", (event) => {
     room: data.get("room"),
     time: `${start} - ${end}, ${date.split("-").reverse().join("/")}`,
     status: "upcoming",
-    owner: "Le Tan Kiet",
+    owner: "Lê Tấn Kiệt",
     accepted: 0,
     declined: 0,
     pending: participants.length,
@@ -624,7 +624,7 @@ form.addEventListener("submit", (event) => {
   form.reset();
   participants.length = 0;
   renderParticipants();
-  formMessage.textContent = "Da tao lich hop thanh cong.";
+  formMessage.textContent = "Đã tạo lịch họp thành công.";
   formMessage.classList.add("success");
   renderMeetings();
   renderSchedule();

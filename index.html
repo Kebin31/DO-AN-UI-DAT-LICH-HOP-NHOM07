@@ -3,20 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quan ly cuoc hop</title>
+    <title>Quản lý cuộc họp</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="auth-mode">
-    <section class="auth-screen" id="authScreen" aria-label="Tai khoan">
+    <section class="auth-screen" id="authScreen" aria-label="Tài khoản">
       <div class="auth-panel">
         <div class="auth-card">
           <div class="auth-title">
-            <p class="eyebrow">He thong quan ly lich hop</p>
+            <p class="eyebrow">Hệ thống quản lý lịch họp</p>
             <h1>Meeting Hub</h1>
           </div>
-          <div class="auth-tabs" role="tablist" aria-label="Tai khoan">
-            <button class="auth-tab active" type="button" data-auth-view="loginForm">Dang nhap</button>
-            <button class="auth-tab" type="button" data-auth-view="registerForm">Dang ky</button>
+          <div class="auth-tabs" role="tablist" aria-label="Tài khoản">
+            <button class="auth-tab active" type="button" data-auth-view="loginForm">Đăng nhập</button>
+            <button class="auth-tab" type="button" data-auth-view="registerForm">Đăng ký</button>
           </div>
 
           <form class="auth-form active" id="loginForm">
@@ -25,48 +25,48 @@
               <input name="email" type="email" autocomplete="email" required placeholder="employee@company.com" />
             </label>
             <label class="field">
-              <span>Mat khau</span>
-              <input name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Nhap mat khau" />
+              <span>Mật khẩu</span>
+              <input name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Nhập mật khẩu" />
             </label>
             <div class="auth-row">
               <label class="check-field">
                 <input name="remember" type="checkbox" />
-                <span>Ghi nho dang nhap</span>
+                <span>Ghi nhớ đăng nhập</span>
               </label>
-              <button class="link-button" type="button">Quen mat khau?</button>
+              <button class="link-button" type="button">Quên mật khẩu?</button>
             </div>
-            <button class="primary-action auth-submit" type="submit">Dang nhap</button>
+            <button class="primary-action auth-submit" type="submit">Đăng nhập</button>
             <p class="form-message" id="loginMessage" role="status"></p>
           </form>
 
           <form class="auth-form" id="registerForm">
             <label class="field">
-              <span>Ho va ten</span>
-              <input name="name" autocomplete="name" required placeholder="Nhap ho va ten" />
+              <span>Họ và tên</span>
+              <input name="name" autocomplete="name" required placeholder="Nhập họ và tên" />
             </label>
             <label class="field">
-              <span>Email cong ty</span>
+              <span>Email công ty</span>
               <input name="email" type="email" autocomplete="email" required placeholder="employee@company.com" />
             </label>
             <label class="field">
-              <span>Phong ban</span>
+              <span>Phòng ban</span>
               <select name="department" required>
-                <option value="">Chon phong ban</option>
-                <option>Phong Ky thuat</option>
-                <option>Phong Nhan su</option>
-                <option>Phong Kinh doanh</option>
-                <option>Phong Van hanh</option>
+                <option value="">Chọn phòng ban</option>
+                <option>Phòng Kỹ thuật</option>
+                <option>Phòng Nhân sự</option>
+                <option>Phòng Kinh doanh</option>
+                <option>Phòng Vận hành</option>
               </select>
             </label>
             <label class="field">
-              <span>Mat khau</span>
-              <input name="password" type="password" autocomplete="new-password" required minlength="6" placeholder="Toi thieu 6 ky tu" />
+              <span>Mật khẩu</span>
+              <input name="password" type="password" autocomplete="new-password" required minlength="6" placeholder="Tối thiểu 6 ký tự" />
             </label>
             <label class="field">
-              <span>Xac nhan mat khau</span>
-              <input name="confirmPassword" type="password" autocomplete="new-password" required minlength="6" placeholder="Nhap lai mat khau" />
+              <span>Xác nhận mật khẩu</span>
+              <input name="confirmPassword" type="password" autocomplete="new-password" required minlength="6" placeholder="Nhập lại mật khẩu" />
             </label>
-            <button class="primary-action auth-submit" type="submit">Tao tai khoan</button>
+            <button class="primary-action auth-submit" type="submit">Tạo tài khoản</button>
             <p class="form-message" id="registerMessage" role="status"></p>
           </form>
         </div>
@@ -82,60 +82,60 @@
             <span>Workspace</span>
           </div>
         </div>
-        <nav class="side-nav" aria-label="Dieu huong">
-          <button class="nav-item active" type="button" data-view="manageView" title="Quan ly cuoc hop">
+        <nav class="side-nav" aria-label="Điều hướng">
+          <button class="nav-item active" type="button" data-view="manageView" title="Quản lý cuộc họp">
             <span aria-hidden="true">≡</span>
-            <span>Quan ly</span>
+            <span>Quản lý</span>
           </button>
-          <button class="nav-item" type="button" data-view="createView" title="Tao lich hop">
+          <button class="nav-item" type="button" data-view="createView" title="Tạo lịch họp">
             <span aria-hidden="true">＋</span>
-            <span>Tao lich</span>
+            <span>Tạo lịch</span>
           </button>
-          <button class="nav-item" type="button" data-view="scheduleView" title="Lich trinh cuoc hop">
+          <button class="nav-item" type="button" data-view="scheduleView" title="Lịch trình cuộc họp">
             <span aria-hidden="true">▦</span>
-            <span>Lich trinh</span>
+            <span>Lịch trình</span>
           </button>
         </nav>
-        <button class="logout-button" type="button" id="logoutBtn">Dang xuat</button>
+        <button class="logout-button" type="button" id="logoutBtn">Đăng xuất</button>
       </aside>
 
       <main class="workspace">
         <section class="topbar">
           <div>
-            <p class="eyebrow">Lich hop noi bo</p>
-            <h1 id="pageTitle">Quan ly cuoc hop</h1>
+            <p class="eyebrow">Lịch họp nội bộ</p>
+            <h1 id="pageTitle">Quản lý cuộc họp</h1>
           </div>
           <div class="user-chip">
             <span class="avatar" id="userAvatar">LK</span>
-            <span id="userName">Le Tan Kiet</span>
+            <span id="userName">Lê Tấn Kiệt</span>
           </div>
         </section>
 
         <section class="view active" id="manageView" aria-labelledby="manageTitle">
           <div class="section-head">
             <div>
-              <h2 id="manageTitle">Danh sach cuoc hop</h2>
-              <p>10 cuoc hop moi nhat cua ban</p>
+              <h2 id="manageTitle">Danh sách cuộc họp</h2>
+              <p>10 cuộc họp mới nhất của bạn</p>
             </div>
             <div class="head-actions">
-              <button class="icon-button" type="button" id="refreshBtn" title="Lam moi">↻</button>
-              <button class="primary-action" type="button" id="exportBtn">Xuat danh sach</button>
+              <button class="icon-button" type="button" id="refreshBtn" title="Làm mới">↻</button>
+              <button class="primary-action" type="button" id="exportBtn">Xuất danh sách</button>
             </div>
           </div>
 
           <div class="toolbar">
             <label class="search-field">
               <span aria-hidden="true">⌕</span>
-              <input id="searchInput" type="search" placeholder="Tim theo tieu de hoac phong hop" />
+              <input id="searchInput" type="search" placeholder="Tìm theo tiêu đề hoặc phòng họp" />
             </label>
             <label class="select-field">
-              <span>Trang thai</span>
+              <span>Trạng thái</span>
               <select id="statusFilter">
-                <option value="all">Tat ca</option>
-                <option value="upcoming">Sap dien ra</option>
-                <option value="running">Dang dien ra</option>
-                <option value="ended">Da ket thuc</option>
-                <option value="cancelled">Da huy</option>
+                <option value="all">Tất cả</option>
+                <option value="upcoming">Sắp diễn ra</option>
+                <option value="running">Đang diễn ra</option>
+                <option value="ended">Đã kết thúc</option>
+                <option value="cancelled">Đã hủy</option>
               </select>
             </label>
           </div>
@@ -144,12 +144,12 @@
             <table>
               <thead>
                 <tr>
-                  <th>Cuoc hop</th>
-                  <th>Phong hop</th>
-                  <th>Thoi gian</th>
-                  <th>Trang thai</th>
-                  <th>Phan hoi</th>
-                  <th class="actions-col">Thao tac</th>
+                  <th>Cuộc họp</th>
+                  <th>Phòng họp</th>
+                  <th>Thời gian</th>
+                  <th>Trạng thái</th>
+                  <th>Phản hồi</th>
+                  <th class="actions-col">Thao tác</th>
                 </tr>
               </thead>
               <tbody id="meetingTable"></tbody>
@@ -159,7 +159,7 @@
           <div class="pagination">
             <span id="pageInfo">Trang 1/1</span>
             <div>
-              <button class="icon-button" type="button" id="prevPage" title="Trang truoc">‹</button>
+              <button class="icon-button" type="button" id="prevPage" title="Trang trước">‹</button>
               <button class="icon-button" type="button" id="nextPage" title="Trang sau">›</button>
             </div>
           </div>
@@ -168,69 +168,69 @@
         <section class="view" id="createView" aria-labelledby="createTitle">
           <div class="section-head">
             <div>
-              <h2 id="createTitle">Tao lich hop</h2>
-              <p>Thong tin bat buoc duoc kiem tra truoc khi luu</p>
+              <h2 id="createTitle">Tạo lịch họp</h2>
+              <p>Thông tin bắt buộc được kiểm tra trước khi lưu</p>
             </div>
           </div>
 
           <form class="meeting-form" id="meetingForm">
             <div class="form-grid">
               <label class="field wide">
-                <span>Tieu de cuoc hop</span>
-                <input name="title" maxlength="200" required placeholder="Nhap ten hoac chu de cuoc hop" />
+                <span>Tiêu đề cuộc họp</span>
+                <input name="title" maxlength="200" required placeholder="Nhập tên hoặc chủ đề cuộc họp" />
               </label>
 
               <label class="field">
-                <span>Phong hop</span>
+                <span>Phòng họp</span>
                 <select name="room" required>
-                  <option value="">Chon phong hop</option>
-                  <option>Phong Lotus - Tang 3</option>
-                  <option>Phong Orchid - Tang 4</option>
-                  <option>Phong Sunflower - Tang 5</option>
-                  <option>Phong Strategy - Online</option>
+                  <option value="">Chọn phòng họp</option>
+                  <option>Phòng Lotus - Tầng 3</option>
+                  <option>Phòng Orchid - Tầng 4</option>
+                  <option>Phòng Sunflower - Tầng 5</option>
+                  <option>Phòng Strategy - Online</option>
                 </select>
               </label>
 
               <label class="field">
-                <span>Ngay hop</span>
+                <span>Ngày họp</span>
                 <input name="date" type="date" required />
               </label>
 
               <label class="field">
-                <span>Thoi gian bat dau</span>
+                <span>Thời gian bắt đầu</span>
                 <input name="start" type="time" required />
               </label>
 
               <label class="field">
-                <span>Thoi gian ket thuc</span>
+                <span>Thời gian kết thúc</span>
                 <input name="end" type="time" required />
               </label>
 
               <div class="field wide participant-field">
-                <span>Nguoi tham gia</span>
+                <span>Người tham gia</span>
                 <div class="participant-input-row">
-                  <input id="participantInput" name="participantInput" placeholder="Nhap ten nguoi tham gia" autocomplete="off" />
-                  <button class="secondary-action" type="button" id="addParticipantBtn">Them</button>
+                  <input id="participantInput" name="participantInput" placeholder="Nhập tên người tham gia" autocomplete="off" />
+                  <button class="secondary-action" type="button" id="addParticipantBtn">Thêm</button>
                 </div>
                 <div class="participant-list" id="participantList" aria-live="polite"></div>
-                <small id="participantHelp">Toi da 5 nguoi tham gia.</small>
+                <small id="participantHelp">Tối đa 5 người tham gia.</small>
               </div>
 
               <label class="field wide">
-                <span>Noi dung cuoc hop</span>
-                <textarea name="notes" maxlength="1000" rows="5" placeholder="Nhap noi dung hoac ghi chu cuoc hop"></textarea>
+                <span>Nội dung cuộc họp</span>
+                <textarea name="notes" maxlength="1000" rows="5" placeholder="Nhập nội dung hoặc ghi chú cuộc họp"></textarea>
               </label>
 
               <label class="field wide upload-box">
-                <span>Tep dinh kem</span>
+                <span>Tệp đính kèm</span>
                 <input name="attachment" type="file" accept=".pdf,.docx,.xlsx,.jpg,.jpeg,.png" />
-                <small>PDF, DOCX, XLSX, JPG, PNG - toi da 20 MB</small>
+                <small>PDF, DOCX, XLSX, JPG, PNG - tối đa 20 MB</small>
               </label>
             </div>
 
             <div class="form-actions">
-              <button class="secondary-action" type="reset">Huy</button>
-              <button class="primary-action" type="submit">Tao lich hop</button>
+              <button class="secondary-action" type="reset">Hủy</button>
+              <button class="primary-action" type="submit">Tạo lịch họp</button>
             </div>
             <p class="form-message" id="formMessage" role="status"></p>
           </form>
@@ -239,18 +239,18 @@
         <section class="view" id="scheduleView" aria-labelledby="scheduleTitle">
           <div class="section-head">
             <div>
-              <h2 id="scheduleTitle">Lich trinh cuoc hop</h2>
-              <p>Xem tat ca cuoc hop sap xep theo tung ngay trong tuan</p>
+              <h2 id="scheduleTitle">Lịch trình cuộc họp</h2>
+              <p>Xem tất cả cuộc họp sắp xếp theo từng ngày trong tuần</p>
             </div>
             <div class="head-actions">
-              <button class="secondary-action" type="button" id="todayWeekBtn">Hom nay</button>
+              <button class="secondary-action" type="button" id="todayWeekBtn">Hôm nay</button>
             </div>
           </div>
 
           <div class="schedule-toolbar">
-            <button class="icon-button" type="button" id="prevWeekBtn" title="Tuan truoc">‹</button>
+            <button class="icon-button" type="button" id="prevWeekBtn" title="Tuần trước">‹</button>
             <span class="schedule-range" id="scheduleRange">--</span>
-            <button class="icon-button" type="button" id="nextWeekBtn" title="Tuan sau">›</button>
+            <button class="icon-button" type="button" id="nextWeekBtn" title="Tuần sau">›</button>
           </div>
 
           <div class="schedule-grid" id="scheduleGrid"></div>
@@ -260,8 +260,8 @@
 
     <dialog id="detailDialog">
       <div class="dialog-head">
-        <h3 id="dialogTitle">Chi tiet cuoc hop</h3>
-        <button class="icon-button" type="button" id="closeDialog" title="Dong">×</button>
+        <h3 id="dialogTitle">Chi tiết cuộc họp</h3>
+        <button class="icon-button" type="button" id="closeDialog" title="Đóng">×</button>
       </div>
       <div id="dialogBody" class="dialog-body"></div>
     </dialog>
